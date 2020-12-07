@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Indie+Flower&family=Lato&family=Open+Sans&display=swap');
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question {
+    font-family: 'Acme', sans-serif;
+    font-size: 26px;
+}
+
+.img {
+    width: 100px;
+}
+
+.logo {
+    width: 300px;
+    margin: 50px;
+}
+
+body {
+    background-image: url("https://img3.goodfon.com/wallpaper/nbig/1/85/priroda-peyzazh-derevo-derevya-845.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.start {
+    padding: 25px 50px;
+}
