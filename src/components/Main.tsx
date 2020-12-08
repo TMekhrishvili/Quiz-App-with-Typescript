@@ -1,12 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './style.css';
 import QuestionCard from '../components/Question';
 import { fetchQuestions } from '../services/fetchQuestions';
 import { QuestionState, AnswerObject } from '../services/types';
+import { gsap, TweenMax, Power3 } from "gsap";
 
 const TOTAL = 10;
 
 const Main: React.FC = () => {
+  let ref = useRef(null);
+  useEffect(() => {
+    gsap.to('.start', {
+      opacity: 1,
+      y: 30,
+      delay: 0.5,
+      easy: Power3.easeOut,
+    })
+    TweenMax.to(
+      ref.current,
+      .8,
+      {
+        opacity: 1,
+        y: -20,
+        easy: Power3.easeOut,
+      })
+  }, [])
+
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
@@ -53,19 +72,17 @@ const Main: React.FC = () => {
 
   return (
     <div className="main">
-      <img className="logo" alt="logo" src="https://www.worlddata.info/pics/quiz.png" />
+      <img ref={ref} className="logo" alt="logo" src="https://www.worlddata.info/pics/quiz.png" />
       {quizOver || userAnswer.length === TOTAL + 1 ? (
-        <button className="start" onClick={startQuiz}>
+        <button className="start" style={over ? { opacity: 1 } : { opacity: 0 }} onClick={startQuiz}>
           {over ? <span>Play Again</span> : <span>Start Quiz</span>}
         </button>
       ) : null}
       {over && (
         <div>
-          <p>Quiz Over</p>
           <p className="score">Score: {score}</p>
         </div>
       )}
-      {!quizOver ? <p className="score">Score: {score}</p> : null}
       {loading ? <img className="img" alt="loading" src="https://www.fogelstad.org/core/dependencies/loader.gif" /> : null}
       {!loading && !quizOver && (
         <QuestionCard
