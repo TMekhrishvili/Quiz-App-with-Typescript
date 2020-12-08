@@ -80,7 +80,7 @@ const Main: React.FC = () => {
         userAnswer.length === number + 1 &&
         number !== TOTAL ?
         <button
-          className="next"
+          className="next opacity"
           onClick={nextQuestion}
         >
           Continue
