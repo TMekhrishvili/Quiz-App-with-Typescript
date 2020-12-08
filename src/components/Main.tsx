@@ -66,7 +66,7 @@ const Main: React.FC = () => {
         </div>
       )}
       {!quizOver ? <p className="score">Score: {score}</p> : null}
-      {loading && <img className="img" alt="loading" src="https://www.fogelstad.org/core/dependencies/loader.gif" />}
+      {loading ? <img className="img" alt="loading" src="https://www.fogelstad.org/core/dependencies/loader.gif" /> : null}
       {!loading && !quizOver && (
         <QuestionCard
           question={questions[number].question}
