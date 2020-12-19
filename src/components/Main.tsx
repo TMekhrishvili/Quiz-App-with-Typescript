@@ -4,7 +4,7 @@ import QuestionCard from '../components/Question';
 import { fetchQuestions } from '../services/fetchQuestions';
 import { QuestionState, AnswerObject } from '../services/types';
 import { gsap, TweenMax, Power3 } from "gsap";
-
+import QuizLogo from '../images/quiz.png';
 const TOTAL = 10;
 
 const Main: React.FC = () => {
@@ -72,7 +72,7 @@ const Main: React.FC = () => {
 
   return (
     <div className="main">
-      <img ref={ref} className="logo" alt="logo" src="https://www.worlddata.info/pics/quiz.png" />
+      <img ref={ref} className="logo" alt="logo" src={QuizLogo} />
       {quizOver || userAnswer.length === TOTAL + 1 ? (
         <button className="start" style={over ? { opacity: 1 } : { opacity: 0 }} onClick={startQuiz}>
           {over ? <span>Play Again</span> : <span>Start Quiz</span>}
